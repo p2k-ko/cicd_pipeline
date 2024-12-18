@@ -1,0 +1,31 @@
+\begin{frame}
+	\frametitle{Container vs. Virtuelle Maschine}
+	\begin{columns}
+		\column{.5\textwidth}
+		Container: \\
+		\begin{center}
+			\begin{tikzpicture}
+				\node[rectangle, draw, minimum width=5cm, minimum height=1cm,rounded corners=.05cm] (hardware) at (0,0) {Hardware};
+				\node[rectangle, draw, minimum width=5cm, minimum height=1cm, above=0.3cm of hardware, rounded corners=.05cm] (os) {Host OS};
+				\node[rectangle, draw, minimum width=5cm, minimum height=1cm, above=0.3cm of os, rounded corners=.05cm] (container) {Container Runtime};
+				\node[rectangle, draw, minimum width=5cm, minimum height=1cm, above=0.3cm of container, rounded corners=.05cm] (image) {Layered Images};
+				\node[rectangle, draw, minimum width=2.2cm, minimum height=1cm, above left=0.3cm and -2.2cm of image, rounded corners=.05cm] (apps1) {App 1};
+				\node[rectangle, draw, minimum width=2.2cm, minimum height=1cm, right=0.6cm of apps1, rounded corners=.05cm] (apps2) {App 2};
+			\end{tikzpicture}
+		\end{center}
+		\column{.5\textwidth}
+		VM:\\
+		\begin{center}
+			\begin{tikzpicture}
+				\node[rectangle, draw, minimum width=5cm, minimum height=1cm,rounded corners=.05cm] (hardware) at (0,0) {Hardware};
+				\node[rectangle, draw, minimum width=5cm, minimum height=1cm, above=0.3cm of hardware, rounded corners=.05cm] (hypervisor) {Hypervisor};
+				\node[rectangle, draw, minimum width=2.2cm, minimum height=1cm, above left =0.3cm and -2.2cm of hypervisor, rounded corners=.05cm] (os1) {Guest OS};
+				\node[rectangle, draw, minimum width=2.2cm, minimum height=1cm, right=0.6cm of os1, rounded corners=.05cm] (os2) {Guest OS 2};
+				\node[rectangle, draw, minimum width=2.2cm, minimum height=1cm, above=0.3cm of os1, rounded corners=.05cm] (libs1) {Libs 1};
+				\node[rectangle, draw, minimum width=2.2cm, minimum height=1cm, above=0.3cm of os2, rounded corners=.05cm] (libs2) {Libs 2};
+				\node[rectangle, draw, minimum width=2.2cm, minimum height=1cm, above=0.3cm of libs1, rounded corners=.05cm] (apps1) {App 1};
+				\node[rectangle, draw, minimum width=2.2cm, minimum height=1cm, above=0.3cm of libs2, rounded corners=.05cm] (apps2) {App 2};
+			\end{tikzpicture}
+		\end{center}
+	\end{columns}
+\end{frame}

@@ -1,0 +1,85 @@
+\begin{frame}
+	\frametitle{Übersicht Kubernetes}
+	
+	\begin{center}
+		\begin{tikzpicture}
+
+			\uncover<0->{
+			% CLUSTER
+			\node[rectangle, draw, minimum width=10cm, minimum height=6.5cm,rounded corners=.05cm] (root) at (-0.5,1.5) {};	
+			\node[inner sep=0pt] (ico) at (-5.5,4.75)
+			{\includegraphics[width=.05\textwidth]{img/png/k8s.png}};
+			
+			
+			% GITLAB
+			\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+			corners=.05cm] (gitlab) at (-3, -1) {Gitlab};
+			\node[inner sep=0pt] (gitlabico) at (-3.75,-0.5)
+			{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/deploy-256.png}};
+		}
+			
+			
+			\uncover<1->{
+				% DEVELOPER
+				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded corners=.05cm] (dev) at (-8, 1) {Dev};	
+			
+				% GIT
+				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded corners=.05cm] (git) at (-8, -1) {git};
+				\draw[->] (dev.south) -- (git.north) node[midway,fill=white] {commit/push};					
+				
+			}
+			
+			\uncover<2->{
+				\draw[->] (git.east) -- (gitlab.west) node[midway,fill=white] {push};
+			}
+			
+			\uncover<3->{
+				% RUNNER
+				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+				corners=.05cm] (runner) at (-3, 1) {Runner};
+				\node[inner sep=0pt] (runnerico) at (-3.75,1.5)
+				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/svc-256.png}};
+				\draw[->] (gitlab.north) -- (runner.south) node[midway,fill=white] {Job};
+			
+			}
+			
+			\uncover<4->{
+			% REGISTRY
+			\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+			corners=.05cm] (registry) at (0, 1) {Registry};
+			\node[inner sep=0pt] (registryico) at (-0.75,1.5)
+			{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/svc-256.png}};
+			\draw[->] (runner.east) -- (registry.west) node[midway,fill=white] {Store};
+			}
+			
+			
+			\uncover<5->{
+			% INTEGRATION REPOSITORY
+			\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+			corners=.05cm] (intrepo) at (-8, 3) {Integration Repo.};
+			\draw[->] (runner.west) -- (intrepo.south east) node[midway,fill=white] {Trigger};		
+			}
+			
+			\uncover<6->{
+			% AGENT
+			\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded corners=.05cm] (agent) at (0, 3) {Agent};
+			\node[inner sep=0pt] (agentico) at (-0.75,3.5)
+			{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/svc-256.png}};
+			\draw[->] (intrepo.east) -- (agent.west) node[midway,fill=white] {Trigger};
+			}			
+
+			
+			\uncover<7->{
+			% APPLICATION
+			\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+			corners=.05cm] (app) at (3, 1) {Application};
+			\node[inner sep=0pt] (appico) at (2,1.5)
+			{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/deploy-256.png}};
+			
+			\draw[->] (agent.east) -- (app.north) node[midway,fill=white] {Create};
+			\draw[->] (registry.east) -- (app.west) node[midway,fill=white] {Pull};			
+			}
+
+		\end{tikzpicture}
+	\end{center}
+\end{frame}

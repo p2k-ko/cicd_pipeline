@@ -1,0 +1,108 @@
+
+\begin{frame}
+	\frametitle{Kubernetes Deployment}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			
+			\uncover<0->{
+				% APPLICATION DEPLOYMENT
+				\node[rectangle, draw, minimum width=10cm, minimum height=6.5cm,rounded corners=.05cm] (root) at (-0.5,1.5) {};	
+				\node[inner sep=0pt] (ico) at (-5.5,4.75)
+				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/deploy-256.png}};
+			}
+				
+%				% GITLAB
+
+%				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/deploy-256.png}};
+%			}
+%			
+%			
+			\uncover<1->{
+				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+				corners=.05cm] (workersvc) at (-0.5, 3.5) {Worker Service};
+				\node[inner sep=0pt] (svcico) at (-1.75,4)				
+				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/svc-256.png}};
+			}
+%			
+			\uncover<2->{
+				
+				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+				corners=.05cm] (workerp1) at (-3.5, 1) {Worker Pod 1};
+				\node[inner sep=0pt] (workerp1ico) at (-4.75,1.5)				
+				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/pod-256.png}};
+				
+				
+				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+				corners=.05cm] (workerp2) at (-0.5, 1) {Worker Pod 2};
+				\node[inner sep=0pt] (workerp2ico) at (-1.75,1.5)				
+				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/pod-256.png}};
+				
+				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+				corners=.05cm] (workerp3) at (2.5, 1) {Worker Pod 3};
+				\node[inner sep=0pt] (workerp3ico) at (1.25,1.5)				
+				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/pod-256.png}};
+				
+				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+				corners=.05cm] (workersec) at (-0.5, -1) {Worker Secret};
+				\node[inner sep=0pt] (workersec) at (-1.75,-0.5)				
+				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/secret-256.png}};
+			}
+			
+			\uncover<4->{
+				\draw[->] (workerp1.north) -- (workersvc.south);
+				\draw[->] (workerp2.north) -- (workersvc.south);
+				\draw[->] (workerp3.north) -- (workersvc.south);
+			}
+%			
+%			\uncover<3->{
+%				% RUNNER
+%				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+%				corners=.05cm] (runner) at (-3, 1) {Runner};
+%				\node[inner sep=0pt] (runnerico) at (-3.75,1.5)
+%				
+%				\draw[->] (gitlab.north) -- (runner.south) node[midway,fill=white] {Job};
+%				
+%			}
+%			
+%			\uncover<4->{
+%				% REGISTRY
+%				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+%				corners=.05cm] (registry) at (0, 1) {Registry};
+%				\node[inner sep=0pt] (registryico) at (-0.75,1.5)
+%				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/svc-256.png}};
+%				\draw[->] (runner.east) -- (registry.west) node[midway,fill=white] {Store};
+%			}
+%			
+%			
+%			\uncover<5->{
+%				% INTEGRATION REPOSITORY
+%				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+%				corners=.05cm] (intrepo) at (-8, 3) {Integration Repo.};
+%				\draw[->] (runner.west) -- (intrepo.south east) node[midway,fill=white] {Trigger};		
+%			}
+%			
+%			\uncover<6->{
+%				% AGENT
+%				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded corners=.05cm] (agent) at (0, 3) {Agent};
+%				\node[inner sep=0pt] (agentico) at (-0.75,3.5)
+%				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/svc-256.png}};
+%				\draw[->] (intrepo.east) -- (agent.west) node[midway,fill=white] {Trigger};
+%			}			
+%			
+%			
+%			\uncover<7->{
+%				% APPLICATION
+%				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+%				corners=.05cm] (app) at (3, 1) {Application};
+%				\node[inner sep=0pt] (appico) at (2,1.5)
+%				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/deploy-256.png}};
+%				
+%				\draw[->] (agent.east) -- (app.north) node[midway,fill=white] {Create};
+%				\draw[->] (registry.east) -- (app.west) node[midway,fill=white] {Pull};			
+%			}
+%			
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+

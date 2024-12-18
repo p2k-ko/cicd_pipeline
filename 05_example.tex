@@ -1,0 +1,20 @@
+\begin{frame}
+\frametitle{Beispielanwendung}
+\begin{itemize}
+	\item Die Beispielanwendung besteht aus drei Java-Microservices
+	\pause
+	\item \textbf{Producer} erstellt Arbeitsaufträge und sendet diese an eine asynchrone Warteschlange. 
+	\begin{itemize}
+		\item<.-> \textbf{WAIT}: Kommando bewirkt einen Wartezyklus von 5~Sekunden im Worker
+		\item<.-> \textbf{NOOP}: Kommando bewirkt eine Ausführung eines Nullbefehls
+		\item<.-> \textbf{FIBONACCI}: Kommando bewirkt die Bereichnung einer Fibonacci-Zahl im Worker
+		\item<.-> \textbf{KILL}: Kommando bewirkt, dass der Worker beendet wird.  
+	\end{itemize}
+	\pause
+	\item \textbf{Worker} nimmt die Kommandos aus der Warteschlange und bearbeitet diese
+	\begin{itemize}
+		\item Abgearbeitete Kommandos werden in die Warteschlage \textbf{results} eingestellt 
+	\end{itemize}
+	\item \textbf{Writer} Der Prozess nimmt die Ergebnisse aus der Warteschlange \textbf{results} und persistiert diese.
+\end{itemize}
+\end{frame}

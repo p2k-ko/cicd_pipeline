@@ -1,0 +1,48 @@
+\begin{frame}
+	\frametitle{Beispielanwendung}
+	
+		\begin{center}
+		\begin{tikzpicture}
+			
+			\uncover<0->{
+				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+				corners=.05cm] (producer) at (-5, 0) {Producer};
+				\node[inner sep=0pt] (producerico) at (-5.85,0.5)
+				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/svc-256.png}};
+			}
+			
+			\uncover<1->{
+				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+				corners=.05cm] (qrabbit1) at (-2, 0) {RabbitMQ $/$cmd};
+				\node[inner sep=0pt] (cmdico) at (-3.45,0.5)
+				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/svc-256.png}};
+				\draw[->] (producer.east) -- (qrabbit1.west);
+			}
+			
+			\uncover<2->{
+				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+				corners=.05cm] (worker) at (1, 0) {Worker};
+				\node[inner sep=0pt] (workerico) at (0.25,0.5)
+				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/svc-256.png}};
+				\draw[->] (qrabbit1.east) -- (worker.west);
+			}
+			
+			\uncover<3->{
+				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+				corners=.05cm] (qrabbit2) at (4, 0) {RabbitMQ $/$result};
+				\node[inner sep=0pt] (qrabbit2ico) at (2.5,0.5)
+				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/svc-256.png}};
+				\draw[->] (worker.east) -- (qrabbit2.west);
+			}
+			
+			\uncover<4->{
+				\node[rectangle, draw, minimum width=1.5cm, minimum height=1cm,rounded
+				corners=.05cm] (writer) at (7, 0) {Writer};
+				\node[inner sep=0pt] (writerico) at (6.25,0.5)
+				{\includegraphics[width=.05\textwidth]{img/png/resources/unlabeled/svc-256.png}};
+				\draw[->] (qrabbit2.east) -- (writer.west);
+			}
+				
+		\end{tikzpicture}
+	\end{center}
+\end{frame}

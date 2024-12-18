@@ -1,0 +1,82 @@
+\documentclass[german,aspectratio=169]{beamer}
+\usetheme{Boadilla}
+
+\definecolor{HSMblue}{rgb}{0.098,0.403,0.721} % HS Mainz (primary)
+\usecolortheme[named=HSMblue]{structure}
+
+% Frame title bit to the right
+\makeatletter
+\setbeamertemplate{frametitle}{%
+	\ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+	\@tempdima=\textwidth%
+	\advance\@tempdima by\beamer@leftmargin%
+	\advance\@tempdima by\beamer@rightmargin%
+	\advance\@tempdima by-2.25cm% <- change value here
+	\hfill%
+	\begin{beamercolorbox}[sep=0.3cm,left,wd=\the\@tempdima]{frametitle}
+		\usebeamerfont{frametitle}%
+		\vbox{}\vskip-1ex%
+		\if@tempswa\else\csname beamer@fteleft\endcsname\fi%
+		\strut\insertframetitle\strut\par%
+		{%
+			\ifx\insertframesubtitle\@empty%
+			\else%
+			{\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\strut\insertframesubtitle\strut\par}%
+			\fi
+		}%
+		\vskip-1ex%
+		\if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+	\end{beamercolorbox}%
+}
+\makeatother
+
+\setbeamersize{text margin left=1.5cm,text margin right=1.5cm}
+
+% Input encoding
+\usepackage[utf8]{inputenc} 
+
+% Plots & Graphs
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,snakes,decorations}
+\usetikzlibrary{positioning,calc,fit}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{arrows.meta}
+\usepackage{verbatim}
+
+
+% Bibliography
+\usepackage[backend=biber,style=numeric-comp,sorting=none]{biblatex}
+\addbibresource{literature.bib}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\title[Realisierung einer CI/CD-Pipeline]{Realisierung einer CI/CD-Pipeline\\ für container-basierte verteilte Anwendungen}
+\subtitle{Status Quo, Herausforderungen, Realisierung am konkreten Beispiel}
+\author{Dr.-Ing. Stephan Schneider}
+
+%\date{\today}
+\date{Dezember 18, 2024}
+
+\begin{document}
+	\input{01_titlepage.tex}
+	\input{02_agenda.tex}
+	\input{02_example.tex}
+	\section{Container-basierte Anwendungen}
+	\input{03_01_origins.tex}
+	\input{03_container.tex}
+	\input{03_01_container.tex}
+	\input{03_02_layered_images.tex}
+	\input{03_02_docker.tex}
+	\input{03_03_trends.tex}
+	\section{CI/CD Pipeline}
+	\input{04_cicd.tex}
+	\section{Beispielanwendung}
+	\input{05_example.tex}
+	\input{05_01_example_application.tex}
+	\input{05_01_example_dply_yaml.tex}
+	\input{05_01_example_deployment.tex}
+	\section{Zusammenfassung}
+	\input{07_summary.tex}
+	\input{08_literature.tex}
+\end{document}
